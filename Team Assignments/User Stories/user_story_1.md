@@ -1,3 +1,5 @@
+#User Story 1
+
 *As a college student, I want to be able to listen to music that matches my emotions to balance my emotional state, and help myself be more productive.*
 For instance, I have diverse emotions and it changes everyday because of relationships with friends, school work, and grades. Depending on my level of happiness, excitement, or sadness, I want to listen music that enhances my feeling. Once I log in to my account, the app should recognizes my level of emotion by analyzing my face. My account should have listed music category that I choose from Spotify. Then, I want the app to play the specific genre of music that reflects my current mood. 
  
