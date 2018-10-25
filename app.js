@@ -6,11 +6,10 @@ var path = require('path');
 var fs = require('fs');
 var formidable = require('formidable');
 const vision = require('@google-cloud/vision');
-const GOOGLE_APPLICATION_CREDENTIALS = "/Users/leeseunghee/Documents/CS411/mood_fixer/CS411-c6734ff69985.json";
 const app = express();
 // Creates a client
 const client = new vision.ImageAnnotatorClient({
-  keyFilename: '/Users/leeseunghee/Documents/CS411/mood_fixer/CS411-c6734ff69985.json'
+  keyFilename: ' '
 });
 
 
