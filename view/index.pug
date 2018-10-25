@@ -1,0 +1,25 @@
+<html>
+    <head>
+
+        <title>Mood Fixer</title>
+
+    </head>
+
+    <body>
+        <header>
+            <h1>Here is the picture</h1>
+            <form>
+                <img src="demo-image.jpg" >
+                <br>
+                <button formaction="/parsed" formmethod="GET">Click here to see about this picture</button>
+            </form>
+            <form action="/parsed" enctype="multipart/form-data" method="POST"> 
+                <input type="file" name="photo" />
+                <input type="submit" value="Upload Photo"/>
+            </form>
+        
+        </header>
+    </body>
+
+
+</html>

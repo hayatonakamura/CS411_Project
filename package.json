@@ -1,0 +1,23 @@
+{
+  "name": "mood_fixer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/storage": "^2.1.0",
+    "@google-cloud/vision": "^0.22.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.0.0",
+    "formidable": "^1.2.1",
+    "github": "^14.0.0",
+    "html": "^1.0.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.3"
+  }
+}
