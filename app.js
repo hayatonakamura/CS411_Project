@@ -9,7 +9,7 @@ const vision = require('@google-cloud/vision');
 const app = express();
 // Creates a client
 const client = new vision.ImageAnnotatorClient({
-  keyFilename: ' '
+  keyFilename: 'secret'
 });
 
 
@@ -40,31 +40,23 @@ app.post('/parsed',(req,res)=>{
         console.log('file uploaded');    
     form.on('file',function(name,file){
         console.log('Uploaded' + file.name);
-
             client
             .labelDetection('./uploaded/'+file.name)
+            //.faceDetection('./uploaded/'+file.name)
             .then(results => {
                 const labels = results[0].labelAnnotations;
-                var labelobj =" ";
-                let count = 0;
-                console.log('Labels:');
-                labels.forEach(label => { 
-                    console.log(label.description)
-                    if(count=0){
-                        labelobj = label.description;
-                        count++;                        
-                    }
-                    else{
-                        console.log(labelobj)
-                        labelobj = labelobj + " , " + label.description;
-                        count++;   
-                        console.log(labelobj);        
-                    }     
-                });
+                //const faces = results[0].faceAnnotations;
+                 var labelobj = " " ;
+                console.log('Faces:');
+                labels.forEach(labels=>{
+                    console.log(labels.description);
+                    labelobj = labelobj + " , " + labels.description;
+                })
+    
                 let imgfile = file.name;
-                console.log('before render');
+                console.log('before render',labelobj);
                 res.render(__dirname + '/view/parsed.pug',{labelobj,imgfile});
-                console.log('after render');
+                console.log('after render',labelobj);
             })
             .catch(err => {
                 res.render(__dirname + '/view/parsed.pug',{title: 'Invalid', message: 'Invalid', errors: 'Invalid File format'})
