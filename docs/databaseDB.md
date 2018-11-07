@@ -5,6 +5,9 @@ Reasons
 - Flexible Data structure
 - Simple CRUD operations
 
+For the sequence diagram, please view mood_fixer_sequence1.png.
+
+
 ## mongoDB Schema
 ```
     var ProductLabel = mongoose.model('LabelObject',{
@@ -16,48 +19,52 @@ Reasons
 ## Example Model
 The general structure for this mongoDB model is the following:
 
-.-user
+-user
 
-....-Day
+......-Day
 
-.......-Moods
+.........-Moods
        
 
 Example:
 
 John Snow
 
-....10-25-2018
+......10-25-2018
 
-........- Angry
+..........- Angry
 
-........- Sad
+..........- Sad
 
-........- Happy
+..........- Happy
 
-........- Happy
+..........- Happy
 
-........- Happy
+..........- Happy
 
-........- Happy
+..........- Happy
 
-....10-26-2018
+......10-26-2018
 
-........- Happy
+..........- Happy
 
-........- Happy
+..........- Happy
 
-........- Angry
+..........- Angry
 
-........- Angry
+..........- Angry
 
-........- Sad
+..........- Sad
 
-........- Sad
+..........- Sad
 
-........- Confused
+..........- Confused
 
 ## Cache Implementation
+The implementation for the cache is done by storing the following information:
 
+- Daily Spotify Playlist (opt.)
+- Previous 7 days of Mood Logs
 
-For the sequence diagram, please view mood_fixer_sequence1.png.
+This is necessary for the application in order to understand their current streak of moods. Certain flags must be set when a specific emotion is seen consistently and through caching, the process will be controlled faster. The cache also uses mongoDB but may additionally use local storage as well.
+
