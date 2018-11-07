@@ -1,7 +1,6 @@
 ## Database
-Choice of DB - mongoDB
+Choice of DB - *mongoDB*
 
-Reasons
 - Flexible Data structure
 - Simple CRUD operations
 
