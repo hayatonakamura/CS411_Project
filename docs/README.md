@@ -1,6 +1,6 @@
 # CS411 Project Documents
 
-Table of Contents:
+## Table of Contents
 
 **User Stories** - Describes 3 user stories related to the project.
 
