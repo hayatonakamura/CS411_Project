@@ -1,7 +1,11 @@
 {
   "name": "mood_fixer",
   "version": "1.0.0",
+<<<<<<< HEAD
   "description": "Developed by Seung Hee Lee, Hayato Nakamura, and Ziyao Zhang",
+=======
+  "description": "",
+>>>>>>> eec3e7b78bb55de773f8ef00e10703ea5d195273
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,12 +16,16 @@
     "@google-cloud/storage": "^2.1.0",
     "@google-cloud/vision": "^0.22.1",
     "body-parser": "^1.18.3",
+<<<<<<< HEAD
     "ejs": "^2.6.1",
+=======
+>>>>>>> eec3e7b78bb55de773f8ef00e10703ea5d195273
     "express": "^4.16.4",
     "express-fileupload": "^1.0.0",
     "formidable": "^1.2.1",
     "github": "^14.0.0",
     "html": "^1.0.0",
+<<<<<<< HEAD
     "mongodb": "^3.1.8",
     "mongojs": "^2.6.0",
     "mongoose": "^5.3.9",
@@ -37,4 +45,9 @@
     "url": "https://github.com/hayatonakamura/CS411_Project/issues"
   },
   "homepage": "https://github.com/hayatonakamura/CS411_Project#readme"
+=======
+    "path": "^0.12.7",
+    "pug": "^2.0.3"
+  }
+>>>>>>> eec3e7b78bb55de773f8ef00e10703ea5d195273
 }
