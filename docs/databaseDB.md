@@ -62,8 +62,14 @@ John Snow
 ## Cache Implementation
 The implementation for the cache is done by storing the following information:
 
-- Daily Spotify Playlist (opt.)
-- Previous 7 days of Mood Logs
+## Cache Schema
+
+```
+    var ProductLabel = mongoose.model('LabelObject',{
+        name: String, 
+        mood: String, 
+    });
+```
 
 This is necessary for the application in order to understand their current streak of moods. Certain flags must be set when a specific emotion is seen consistently and through caching, the process will be controlled faster. The cache also uses mongoDB but may additionally use local storage as well.
 
