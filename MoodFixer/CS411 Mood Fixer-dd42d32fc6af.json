@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cs411-mood-fixer",
+  "private_key_id": "dd42d32fc6afd66df34db4f9728514a78edb5308",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDdin0GQCShjgoF\n1q9eor2/YPQEEwGfkmBt17hwl3h02wNiFKoRI2Y0pAHxCpKrDCmMBv79dAtCuhCW\naoKT0oFXBgbT89ET37m3MnaHkmJFfrZy4ZylthWg7LtmFBMMj02GoUcWBIB+F81d\n0V+0YUxj5MwioOgS2raEUpdRCDp+qbysL+CgpaiJ4moAGXh5eHtip+jNfHInxRRf\njE5OG42uQx4MsBCKWAhHFy+nAoEN8oroHHoUMuDIxlErRbrKa7p0H2AFkBPEjqVg\n7EMUyMgvNi1Pa/hN0ijhp1JptCghOs275m+K6TPif0l0DzFhDWzeeaJpnc1sIerD\n3S008k9xAgMBAAECggEADno2HOI0sp0IYSTMLYxHh5njoF+Il9+2Lv9tpWf0nnhQ\ngoiUq42LaI2+Nb0J5CUlkunDIJeEg94KZvX7ZgMX4jK54AB7LYgNiCADWG0zwFRd\nQmkldjvNsog939gYfZXgzFc+QL1XE0ZlbIfZ7/z6w71oLKwktlS2IDQQgOJfhjbc\nv0rbfS/s+0Qe2KBIuTiujSpsHSd9FaqPMRD0iGM1c568ZGchYaT1AWaRUwpBR2jk\nleIRzbWunn67zWrv90MTEoDcjAApPXAg8YDTW+1kETSoodV1ymUQKOWR5Tx95BO/\nC6RlcPZWSahLv8ToN4t/YoBRRbMnzBVOlGMDy2pFdQKBgQD4MUrVZU/nkvSUmcOv\nzhWRjVDWwt7S9ascM/C4hRMiP8YOw9v0MskVYuGSQW5nDYtA7XH3W1ctXuoh6sXj\nXSXVCTqTpLtjwYZ9cpWMVOpTTWoJbtPIzapaxgqiZxc/Ry0vCgFqFCBuo3Tq3e6A\nv/RBIlz+5nDuGZ6jkgl+x0gjzQKBgQDkgpHKcsQh8AEHjQgKeydkM4RF91UOWjdy\nYxmKFC9jLY/fgFP3eXmo+T7pSgwrec990TP7MjtGnO5xYjKt6paWQZu8Whf+kJYN\nn0zvGhV6v8WqDpXoG8H5xpGgb3/OgICmIOokXGwD4CDV3OgRuJ8sx+uTxpNXXZCc\n8dzBmvR+NQKBgD300CGFMPU2EigmWltArtGu3Uc/TjCLczOPI8BsN+KM2PxGmFnV\nc60LChRgkRbYorKKk7CT9Kc20mu1F8EyN4d+zkidDspQPSqDuCFX8UbqRFYmfGfc\nL3KJjY4M/hilw/nCHahFbfMwirc2v5sUT/0SfvSCwh4t9xQOGKC1TqThAoGAGCxr\n6ePMNd7i7P6RbDJtD1+XzaMFn3gRx4sOR5otDSvjvXwg5dw275Y2fo1zziGbvq6j\n9h3xQV4Wp24A+H8JoSmdpQZO5YI8LYK9q8mxngOtkHjsiNpu4dKM01EYTysu8OQo\ngOI6FwrdzmIJNt62EBGyLTbjnWlrg/7eIKkY1kUCgYEAuh1rHn5Leq1MedLfpbVJ\nz0I1UzZFC5wlFFRi3wMxFx5LEA+qMDq1erIcr6kSqSzedAYWOCokoENsH2GmMDxy\np4fZwIGt74IEYjblx9HPuXiYosiDZ+m6jmTj13BoEbZVD5g5MQj87ZaoUw1OvCMV\nZPw8flgz/R/I0q5N624ukYw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "hayato-nakamura@cs411-mood-fixer.iam.gserviceaccount.com",
+  "client_id": "114900429045504864497",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hayato-nakamura%40cs411-mood-fixer.iam.gserviceaccount.com"
+}
