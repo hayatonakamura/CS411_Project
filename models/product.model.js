@@ -3,13 +3,21 @@ const Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb://hayaton:cs411password@ds153093.mlab.com:53093/moodfixer');
+mongoose.connect('mongodb://cassie:cassie1004@ds155313.mlab.com:55313/mood_fixer');
 
 module.exports = function(S){
 
     var ProductLabel = mongoose.model('LabelObject',{
         name: String, 
-        mood: String, 
+        mood: {
+            Joy:"",
+            Anger:"",
+            Sorrow:"",
+            Surprise:"",
+            underExposedLikelihood:"",
+            blurredLikelihood:"",
+            headwearLikelihood:""
+        } 
     });
     
     var product1 = new ProductLabel;
@@ -23,7 +31,6 @@ module.exports = function(S){
 
 
 }
-
 
 
 // Export the model

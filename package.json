@@ -1,53 +1,33 @@
 {
-  "name": "mood_fixer",
+  "name": "mood_fixer_final",
   "version": "1.0.0",
-<<<<<<< HEAD
-  "description": "Developed by Seung Hee Lee, Hayato Nakamura, and Ziyao Zhang",
-=======
   "description": "",
->>>>>>> eec3e7b78bb55de773f8ef00e10703ea5d195273
   "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/storage": "^2.1.0",
     "@google-cloud/vision": "^0.22.1",
-    "body-parser": "^1.18.3",
-<<<<<<< HEAD
-    "ejs": "^2.6.1",
-=======
->>>>>>> eec3e7b78bb55de773f8ef00e10703ea5d195273
+    "assert": "^1.4.1",
     "express": "^4.16.4",
-    "express-fileupload": "^1.0.0",
+    "firebase-auth-node": "^1.0.3",
     "formidable": "^1.2.1",
-    "github": "^14.0.0",
-    "html": "^1.0.0",
-<<<<<<< HEAD
-    "mongodb": "^3.1.8",
-    "mongojs": "^2.6.0",
-    "mongoose": "^5.3.9",
-    "nodemon": "^1.18.6",
+    "git": "^0.1.5",
+    "googleapis": "^35.0.0",
+    "lowdb": "^1.0.0",
+    "mongodb": "^3.1.9",
+    "mongoose": "^5.3.10",
+    "oauth": "^0.9.15",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-google-oauth20": "^1.0.0",
     "path": "^0.12.7",
-    "pug": "^2.0.3"
-  },
-  "directories": {
-    "doc": "docs"
-  },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hayatonakamura/CS411_Project.git"
-  },
-  "bugs": {
-    "url": "https://github.com/hayatonakamura/CS411_Project/issues"
-  },
-  "homepage": "https://github.com/hayatonakamura/CS411_Project#readme"
-=======
-    "path": "^0.12.7",
+    "promise": "^8.0.2",
     "pug": "^2.0.3"
   }
->>>>>>> eec3e7b78bb55de773f8ef00e10703ea5d195273
 }

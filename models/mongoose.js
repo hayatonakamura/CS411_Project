@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 mongoose.Promise = globsl.Promise
 
-mongoose.connect('mongodb://hayaton:cs411password@ds153093.mlab.com:53093/moodfixer');
+mongoose.connect('mongodb://cassie:cassie1004@ds155313.mlab.com:55313/mood_fixer');
 
 module.export = {
     mongoose:mongoose 
