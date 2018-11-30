@@ -14,8 +14,8 @@ class App extends Component {
     this.state = {
       loggedIn: params.access_token ? true : false,
       SearchPlaylists: {
-          name: 'Not yet got it = =',
-          image: ''
+          name: 'Not yet got it',
+          url: 'Not yet got it'
       }
     }
     if(params.access_token){
@@ -33,24 +33,48 @@ class App extends Component {
     return hashParams;
   }
 
+  // Searching() {
+  //   spotifyWebApi.getRecommendations({ seed_genres: 'sad' })
+  //   .then((response) => {
+  //           console.log(response);
+  //           var arrayofObjects = response.tracks;
+  //           console.log(arrayofObjects);
+  //           if(response != null){
+  //             var ret = arrayofObjects.map(item => {
+  //               console.log(item.external_urls.spotify);
+  //               this.setState({
+  //                   SearchPlaylists:{
+  //                       name: item.name,
+  //                       url: item.external_urls.spotify
+  //                       // image: item.album.images[0].url
+  //                   }
+  //               })
+  //             }
+  //             )
+  //           }
+  //   }
+  //   )
+  // }
 
-  Searching(){
-    spotifyWebApi.searchPlaylists('happy')
-      .then((response) => {
-        if(response != null){
-          const list = response.playlists.items;
-          list.map(item => {
-            this.setState({
-              SearchPlaylists:{
-                name: item.name,
-                image: item.images[0].url
-              }
-            })
-          }
-          )
-        }
-      })
+
+  Searching() {
+
+    spotifyWebApi.getRecommendations({ seed_genres: 'sad,sleep' })
+    .then((response) => {
+            console.log(response);
+            var arrayofObjects = response.tracks;
+            console.log(arrayofObjects);
+            if(response != null){
+              var ret = arrayofObjects.map(item => {
+                console.log(item.external_urls.spotify);
+                var track_id = item.id;
+                spotifyWebApi.addToMySavedTracks([track_id]);
+              })
+            }
+            window.open("https://open.spotify.com/collection/tracks")
+    })
   }
+
 
   render() {
     return (
@@ -58,10 +82,10 @@ class App extends Component {
         <a href = 'http://localhost:8888'>
           <button>login with spotify</button>
         </a>
-        <div> Search for 'Happy' Playlist: { this.state.SearchPlaylists.name } </div>
-        <div><img src = { this.state.SearchPlaylists.image }/></div>
+        {/* <div> Search for Playlist: { this.state.SearchPlaylists.name } </div>
+        <div>Here is the link: { this.state.SearchPlaylists.url }</div> */}
         <button onClick = {() => this.Searching()}>
-          Now do the search
+          Check out recommended music!
         </button>
       </div>
     );
