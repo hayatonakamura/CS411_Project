@@ -8,7 +8,7 @@ var mongo = require('mongodb');
 var scale_calc = require('../routes/scale_calc.js');
 var spotify = require('../routes/spotify.js');
 var camera = require('../routes/camera.js');
-
+//test
 let username = '';
 let password = '';
 let dev_db_url = 'mongodb://' + username + ':' + password + '@ds155313.mlab.com:55313/mood_fixer';
