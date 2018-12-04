@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb://cassie:cassie1004@ds155313.mlab.com:55313/mood_fixer');
+mongoose.connect('');
 
 module.exports = function(S){
 
@@ -11,12 +11,9 @@ module.exports = function(S){
         name: String, 
         mood: {
             Joy:"",
-            Anger:"",
             Sorrow:"",
-            Surprise:"",
-            underExposedLikelihood:"",
-            blurredLikelihood:"",
-            headwearLikelihood:""
+            Scale:0,
+            Genre: ""
         } 
     });
     

@@ -5,9 +5,12 @@ var save_local = require('../models/localdb.js');
 var formidable = require('formidable');
 var mongoose = require('mongoose');
 var mongo = require('mongodb');
+var scale_calc = require('../routes/scale_calc.js');
+var spotify = require('../routes/spotify.js');
+var camera = require('../routes/camera.js');
 
-let username = 'cassie';
-let password = 'cassie1004';
+let username = '';
+let password = '';
 let dev_db_url = 'mongodb://' + username + ':' + password + '@ds155313.mlab.com:55313/mood_fixer';
 let mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
@@ -21,10 +24,13 @@ const client = new vision.ImageAnnotatorClient({
     keyFilename: '/Users/leeseunghee/Documents/CS411/mood_fixer_final/moodfixer-0022bbf78ad5 10-04-24-398 10-59-26-743.json'
   })
 
+
+
 module.exports = function(req,res){
     
     var filename;
     console.log('start')
+    //camera();
     var form = new formidable.IncomingForm();
         form.parse(req);
         form.on('fileBegin',function(name,file){
@@ -42,36 +48,41 @@ module.exports = function(req,res){
                 const faces = results[0].faceAnnotations;
                 var faceobj = {
                     Joy:"",
-                    Anger:"",
                     Sorrow:"",
-                    Surprise:"",
-                    underExposed:"",
-                    blurred:"",
-                    headwear:""
-                    
+                    Genre: ""
                 };
                 console.log('Faces:');
                 faces.forEach((face, i) => {
                     console.log(`  Face #${i + 1}:`);
                     console.log(`    Joy: ${face.joyLikelihood}`);
-                    console.log(`    Anger: ${face.angerLikelihood}`);
                     console.log(`    Sorrow: ${face.sorrowLikelihood}`);
-                    console.log(`    Surprise: ${face.surpriseLikelihood}`);
                     faceobj['Joy'] = `${face.joyLikelihood}`;
-                    faceobj['Anger'] = `${face.angerLikelihood}`;
                     faceobj['Sorrow'] = `${face.sorrowLikelihood}`;
-                    faceobj['Surprise'] = `${face.surpriseLikelihood};`;
-                    faceobj['underExposed'] = `${face.underExposedLikelihood}`;
-                    faceobj['headwear'] =  `${face.headwearLikelihood}`;
+                    
                     
                 });
+                
+                faceobj.Genre = scale_calc(faceobj);
+                console.log("Genre is: ",faceobj.Genre);
+
+
                 save_tool(faceobj);
                 save_local(faceobj);
 
+            var music = spotify(faceobj.Genre);
+            
+            music.then((data)=>{
+
+                console.log(data);
                 let imgfile = file.name;
                 console.log('before render',faceobj);
-                res.render('../view/parsed.pug',{faceobj,imgfile});
+                res.render('../view/parsed.pug',{faceobj,imgfile,data});
                 console.log('after render',faceobj);
+                
+            })
+            
+            
+                
             })
             .catch(err => {
                 res.render('../view/parsed.pug',{title: 'Invalid', message: 'Invalid', errors: 'Invalid File format'})

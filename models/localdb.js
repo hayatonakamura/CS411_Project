@@ -8,12 +8,8 @@ var ProductLabel = mongoose.model('Object',{
     name: String, 
     mood: {
         Joy:"",
-        Anger:"",
         Sorrow:"",
-        Surprise:"",
-        underExposedLikelihood:"",
-        blurredLikelihood:"",
-        headwearLikelihood:""
+        Genre: ""
     }  
 });
 
