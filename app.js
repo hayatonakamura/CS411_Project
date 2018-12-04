@@ -24,26 +24,13 @@ app.use(express.static(__dirname + '/routes'));
 app.set('view engine', 'pug');
 
 
-// passport.use(new GoogleStrategy({
-//     clientID:'7083216799-e7v5oqfmrrq1uhmblnknprcvulvrtku8.apps.googleusercontent.com',
-//     ClientSecret: '6_vUFQS2p_d1k_TCpgUVxGq2',
-//     callbackURL:"http://localhost:3000/logindone"
-// },
-// function(accessToken, refreshToken, profile, cb){
-//     User.findOrCreate({
-//         googleId: profile.id}, function(err,user){
-//                 console.log(profile.id)
-//                 return cb(err,user);
-//         });
-//     }
 
-// ));
 
 passport.use(
     new SpotifyStrategy(
       {
-        clientID: '21e29a555e914a53a9752ff98e2d7708',
-        clientSecret: 'b5614bff2a234b029d5577c9f2770ca5',
+        clientID: '',
+        clientSecret: '',
         callbackURL: 'http://localhost:3000/logindone'
       },
       function(accessToken, refreshToken, expires_in, profile, done) {
