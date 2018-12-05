@@ -25,8 +25,8 @@ app.use(express.static(__dirname + '/view'));
 app.use(express.static(__dirname + '/routes'));
 app.set('view engine', 'pug');
 
-var clientID = '168bf21f216b4bd1af6d571c272ee031';
-var clientSecret = '2e00b9b143ec47e3bf737ba7492127d0';
+var clientID = '';
+var clientSecret = '';
 var callbackURL = 'http://localhost:3000/logindone';
 // passport.use(new GoogleStrategy({
 //     clientID:'7083216799-e7v5oqfmrrq1uhmblnknprcvulvrtku8.apps.googleusercontent.com',
