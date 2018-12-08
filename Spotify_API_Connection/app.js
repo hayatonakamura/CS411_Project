@@ -96,6 +96,7 @@ app.get('/',(req,res)=>{
 
 var access_token;
 app.get('/logindone',(req,res)=>{
+    var name = "";
     var code = req.query.code || null;
 
     var authOptions = {
@@ -120,11 +121,12 @@ app.get('/logindone',(req,res)=>{
         json: true
       };
       request.get(options, function(error, response, body) {
-        console.log(body.id);
+        name = body.display_name;
+        console.log(body.display_name);
+        res.render(__dirname + '/view/loggedin.pug', {title:'user_id', message:name}); 
       });
 
     });
-    res.render(__dirname + '/view/loggedin.pug');  
 });
 
 
