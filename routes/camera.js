@@ -1,19 +1,23 @@
+
+//Available in nodejs
+ 
 var NodeWebcam = require( "node-webcam" );
  
  
 //Default options
-
-
 module.exports = function(){
+
+    console.log('in camera')
+
     var opts = {
- 
+        
         //Picture related
      
         width: 1280,
      
         height: 720,
      
-        quality: 100,
+        quality: 300,
      
      
         //Delay to take shot
@@ -29,7 +33,7 @@ module.exports = function(){
         // [jpeg, png] support varies
         // Webcam.OutputTypes
      
-        output: "jpeg",
+        output: "jpg",
      
      
         //Which camera to use
@@ -58,13 +62,15 @@ module.exports = function(){
      
      
     //Will automatically append location output type
+    console.log(__dirname);
+    var url = "/Users/leeseunghee/Documents/CS411/mood_fixer_final/uploaded/test_picture.jpg";
      
-    Webcam.capture( "test_picture", function( err, data ) {} );
+    Webcam.capture( url, function( err, data ) {} );
      
      
     //Also available for quick use
      
-    NodeWebcam.capture( "test_picture", opts, function( err, data ) {
+    NodeWebcam.capture( url, opts, function( err, data ) {
      
     });
      
@@ -85,10 +91,11 @@ module.exports = function(){
         callbackReturn: "base64"
     };
      
-    NodeWebcam.capture( "test_picture", opts, function( err, data ) {
+    NodeWebcam.capture( url, opts, function( err, data ) {
      
         var image = "<img src='" + data + "'>";
      
     });
+
 
 }

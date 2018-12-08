@@ -4,59 +4,48 @@ var spotifyApi = new SpotifyWebApi();
 
 var clientID = '';
 var clientSecret = '';
-var callbackURL = 'http://localhost:3000/logindone';
+var callbackURL = '';
 
 
 
-module.exports = function(S){
-    // resp.header('Access-Control-Allow-Origin', '*');
-    // resp.header('Access-Control-Allow-Headers', 'X-Requested-With');
+module.exports = function(S,access_token){
 
-    var authOptions = {
-        method: 'POST',
-        url: 'https://accounts.spotify.com/api/token',
-        headers: 
-        { 'Postman-Token': '',
-            'Cache-Control': 'no-cache',
-            Authorization: 'Basic',
-            'Content-Type': 'application/x-www-form-urlencoded' },
-        form: { grant_type: 'client_credentials' }
-    }
+return new Promise(function(resolve, reject) {
 
-    return new Promise(function(resolve, reject) {
-                    // Do async job
-        request(authOptions, function (error, response, body) {
-            if (error) reject(error);
-                console.log(body)
-                resolve(body);
-            });
-    })
+    spotifyApi.setAccessToken(access_token);
+
+    var user_id;
+
+    spotifyApi.getMe()
+    .then(function(data) {
+        user_id = data.body.id
+        console.log('Some information about the authenticated user', data.body);
+    }, function(err) {
+        console.log('Something went wrong!', err);
+    });
+
+
+    var optionsRecommendation = {
+        url: 'https://api.spotify.com/v1/recommendations',
+        qs: { seed_genres: S},
+        headers: {
+            'Authorization': 'Bearer '+ access_token
+        },
+        json: true
+    };
+        
+    request.get(optionsRecommendation, function(error, response, body) {
+        var arrayofobject = body.tracks;
+            arrayofobject.map(function(item) {
+                //console.log(item.external_urls.spotify); 
+                var track_id = item.id;
+                //console.log(track_id);
+                spotifyApi.addToMySavedTracks([track_id]);                          
+        })
+    });
+
+
+});
 
 }
 
-// module.exports = function(S){
-
-//     var options = { 
-//         method: 'GET',
-//         url: 'https://api.spotify.com/v1/search',
-//         qs: { q: S, type: 'playlist' ,limit:1},
-//         headers: 
-//             { 'Postman-Token': 'a587c239-42a2-4146-86f4-dffb6e2eef37',
-//             'Cache-Control': 'no-cache',
-//             Authorization: 'Bearer BQAmozwT5lTjex4vEq4mWKmc3PeP4lrwfyPuPlHLPAI7io2y1m0InF-TT7O0r_B0r2vzb0IY6GFtvsGE3Q0'} 
-//             };
-        
-//         return new Promise(function(resolve, reject) {
-//             // Do async job
-//                 request.get(options, function(err, resp, body) {
-//                     if (err) {
-//                         console.log(err)
-//                         reject(err);
-//                     } else {
-//                         var res = JSON.parse(body)
-//                         resolve(res.playlists.items[0].external_urls.spotify);
-//                     }
-//                 })
-//             })
-
-// }

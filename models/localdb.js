@@ -5,34 +5,44 @@ var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://127.0.0.1:27017/db";
 
 var ProductLabel = mongoose.model('Object',{
-    name: String, 
-    mood: {
-        Joy:"",
-        Sorrow:"",
-        Genre: ""
-    }  
+    user: String, 
+    Score:[]
 });
 
 module.exports = function (S){
     var new_product = new ProductLabel;
 
-    new_product.mood = S;
-
+    new_product.user = S.user
+    
     MongoClient.connect(url,{useNewUrlParser: true},function(err,db){
         if(err){
             console.log('connection failed');
         }
         else{
             var dbo = db.db("emotion_db");
-            dbo.collection("emotions").insertOne(new_product,function(err,result){
-                if(err)
-                {
-                    console.log(err);
-                    return;
+
+            dbo.collection("emotions").findOne({ 'user': S.user }, 'name occupation', function (err, person) {
+                if (err) {
+                   
                 }
-                console.log('item inserted');
-                db.close();
-            });
+                if(person == null){
+                    dbo.collection("emotions").insertOne(new_product,function(err,result){
+                        if(err)
+                        {
+                            console.log(err);
+                            return;
+                        }
+                        console.log('item inserted');
+                        db.close();
+
+                    });
+
+                }
+                else if(person != null){}
+                    //console.log('person found: ',person)
+              });
+
+            
         }
     });
 

@@ -1,30 +1,39 @@
 const mongoose = require('mongoose');
+var PL =require('../models/object2.js')
 const Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise
 
-mongoose.connect('');
+mongoose.connect('mongodb://cassie:cassie1004@ds155313.mlab.com:55313/mood_fixer');
+
 
 module.exports = function(S){
 
-    var ProductLabel = mongoose.model('LabelObject',{
-        name: String, 
-        mood: {
-            Joy:"",
-            Sorrow:"",
-            Scale:0,
-            Genre: ""
-        } 
-    });
+    var product1 = new PL;
+    product1.user = S.user
+
+
+    PL.find({user:S.user},function(err, docs) {
+
+       
+        if(err){
+            console.log(err)
+        }
+        if(!docs[0]){
+
+            product1.save().then((doc)=>{
+                console.log('Saved Product!')
+            });
+
+        }
+        else {
+            //console.log('person found online',docs)
+        }
+
+
+    })
     
-    var product1 = new ProductLabel;
-
-    product1.mood = S;
-
-    product1.save().then((doc)=>{
-        console.log('Saved Product!')
-        console.log(doc);
-    });
+   
 
 
 }

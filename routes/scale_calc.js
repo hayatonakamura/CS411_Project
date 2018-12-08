@@ -40,6 +40,6 @@ module.exports = function(obj){
     console.log(scale)
     console.log(Genres[scale])
 
-    return Genres[scale];
+    return [Genres[scale],scale];
     
 }
