@@ -142,5 +142,9 @@ app.post('/parsed',(req,res)=>{
   res.render()
 });
 
+app.get('/logout',(req,res) =>{
+  res.redirect("https://spotify.com/logout")
+});
+
 
 
