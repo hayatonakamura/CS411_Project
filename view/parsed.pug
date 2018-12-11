@@ -1,25 +1,35 @@
 <html>
     <head>
         <title>Mood Fixer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="parsed.css">
     </head>
 
     <body>
+            <!-- The video -->
+    <video autoplay muted loop id="mynewVideo">
+        <source src="./image/Cloud_Surf.mp4" type="video/mp4">
+    </video>
+        <div class="content">
         <header>
-            <h1>Here is the labels of the picture</h1>
+            <h1 align='center'>How are you feeling?</h1>
             <form>
                 <img src=#{imgfile}>                
-                <br>
-                <br>
-                <p style="text-align:center;color:red; margin-top:70px; font-size:20px; font-style:bold "> #{errors}</p>
-                <br>
-                #{avg}
-                #{score}
-                <h5> recent <h5> #{recent}
-
-                <a href=#{data} target="_blank">
-                    <input type="button" value="Goto Spotify"/>
+                //<p style="text-align:center;color:red; margin-top:70px; font-size:20px; font-style:bold "> #{errors}</p>
+                <p style="padding-left: 60px;">  Your Latest Emotion Score is: <b><font color="red">#{recent} </font></b> <br> Your Average Emotion Score is: <b>#{avg}</b> <br> Your Individual Emotion Scores are: <b>#{score}</b> </p>
+  
+                
+                <a style="float:center" href='/spotify' target="_blank">
+                 <input style="float:center" type="button" value="My Spotify"/>
                 </a>
+                 <a style="float:center" href='/logout'>
+                    <input type = "button" value = logout>
+                </a>
+                <h3 align="center"> What do these scores mean? </h3>
+                <p> We rate your emotions with a score ranging from -100 to 100, where <i> negative</i> 100 indicates maximum sorrow, and <i>positive</i> 100 indicates maximum joy. Depending on this score, our system will automatically add 10 songs on your spotify library with the appropriate genre. </p>
+                <p> Generally, -100 ~ -50 = Sad, -50 ~ 0 = Moody/Confused, 0 ~ 50 = Neutral, and 50 ~ 100 = Happy. </p>
             </form>       
         </header>
+        <div>
     </body>
 </html>
