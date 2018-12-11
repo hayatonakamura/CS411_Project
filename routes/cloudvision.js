@@ -12,9 +12,9 @@ var spotify = require('../routes/spotify.js');
 var camera = require('../routes/camera.js');
 //var faceobj = require('./models/faceobj.js');
 
-let username = '';
-let password = '';
-let dev_db_url = 'mongodb://' + username + ':' + password + '';
+let username = 'cassie';
+let password = 'cassie1004';
+let dev_db_url = 'mongodb://' + username + ':' + password + '@ds155313.mlab.com:55313/mood_fixer';
 let mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
@@ -33,21 +33,17 @@ module.exports = function(req,res,access_token,userid){
     
     var filename;
     console.log('start')
-    //camera();
     var form = new formidable.IncomingForm();
         form.parse(req);
         form.on('fileBegin',function(name,file){
-            file.path = './uploaded/' + 'happy.jpg';
-            filename = 'happy.jpg';
+            file.path = './uploaded/' + 'test_picture.jpg';
+            filename = 'test_picture.jpg';
             console.log(file.path); 
-
         })  
         console.log('file uploaded');    
         form.on('file',function(name,file){
-    
-        console.log('Uploaded' + 'happy.jpg');
             client
-            .faceDetection('./uploaded/'+ 'happy.jpg')     
+            .faceDetection('./uploaded/'+ 'test_picture.jpg')     
             .then(results => {
                 const faces = results[0].faceAnnotations;
                 var tempobj = {
@@ -57,30 +53,26 @@ module.exports = function(req,res,access_token,userid){
                     Score: "",
                     Genre:[],
                 };
-                console.log('Faces:');
                 faces.forEach((face, i) => {
-                    console.log(`  Face #${i + 1}:`);
-                    console.log(`    Joy: ${face.joyLikelihood}`);
-                    console.log(`    Sorrow: ${face.sorrowLikelihood}`);
                     tempobj['Joy'] = `${face.joyLikelihood}`;
                     tempobj['Sorrow'] = `${face.sorrowLikelihood}`;
-                    
-                    
                 });
                 
-                tempobj.Genre = scale_calc(tempobj);                
+                tempobj.Genre = scale_calc(tempobj);  
+                console.log("return score is ",tempobj.Genre[1]);              
                 save_mood_tool(userid,tempobj.Genre[1]);
                 
                 save_mood_local(userid,tempobj.Genre[1]).then((avg_scores)=>{
-                    //console.log("average score is: ",avg_scores);
-
+                    
                     var music = spotify(tempobj.Genre[0],access_token);
-                    console.log('passing obj', avg_scores)
+            
+                    //pass recent score to avg_scores
+                    avg_scores.recent =tempobj.Genre[1]
                     res.render( '../view/parsed.pug',avg_scores);
                     music.then((data)=>{
         
                         //console.log(data);
-                        let imgfile = 'happy.jpg';
+                        let imgfile = 'test_picture.jpg';
                         //console.log('before render',tempobj);
                         //res.render('../view/parsed.pug',{tempobj,imgfile,data});
                         //console.log('after render',tempobj);
@@ -89,11 +81,6 @@ module.exports = function(req,res,access_token,userid){
 
                 });
                 
-
-
-
-
-
          
                
             })

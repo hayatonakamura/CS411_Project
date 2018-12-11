@@ -31,8 +31,8 @@ app.use(express.static(__dirname + '/routes'));
 app.use(express.static(__dirname + '/login', { redirect : false }));
 app.set('view engine', 'pug');
 
-var clientID = ''
-var clientSecret = ''
+var clientID = '21e29a555e914a53a9752ff98e2d7708'
+var clientSecret = 'b5614bff2a234b029d5577c9f2770ca5'
 var callbackURL = 'http://localhost:3000/logindone'
 var userid ;
 
@@ -91,19 +91,18 @@ app.post('/camera',(req,res)=>{
 
 var access_token;
 app.get('/logindone',(req,res)=>{
-
+  console.log(req.cookies)
   jwt.verify(req.cookies.token,'secret',function(err,decoded){
+    console.log("entry point diff",req.cookies.fromlogin, decoded)
     if(err && !req.cookies.fromlogin){
       console.log("you need to log in!");
       res.redirect('/');
-    }else if(req.cookies.fromlogin && !decoded){
+    }else if(req.cookies.fromlogin && err){
         
       req.cookies.fromlogin =false
   
     var code = req.query.code || null;
     
-    console.log('code',code)
-
     var authOptions = {
         method:'POST',
         url: 'https://accounts.spotify.com/api/token',
@@ -195,14 +194,7 @@ app.get('/spotify',(req,res) =>{
 });
 
 app.get('/logout',(req,res)=>{
-  /*var options = {
-    method:'GET',
-    url:""
-  }
-  request.get(options, function(error, response, body) {
-    
-  });*/
-
+ 
   res.clearCookie('token');
   res.clearCookie('spotify_auth_state');
   res.redirect('/');
