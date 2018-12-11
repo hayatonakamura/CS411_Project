@@ -31,8 +31,8 @@ app.use(express.static(__dirname + '/routes'));
 app.use(express.static(__dirname + '/login', { redirect : false }));
 app.set('view engine', 'pug');
 
-var clientID = '21e29a555e914a53a9752ff98e2d7708'
-var clientSecret = 'b5614bff2a234b029d5577c9f2770ca5'
+var clientID = ''
+var clientSecret = ''
 var callbackURL = 'http://localhost:3000/logindone'
 var userid ;
 
