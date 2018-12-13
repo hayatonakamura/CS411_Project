@@ -5,8 +5,11 @@ Developed by Seung Hee Lee, Hayato Nakamura, and Ziyao Zhang
 For every feeling you have, there is a certain song that just speaks to you and makes you feel better inside, and that’s why we like music so much: for the emotion it compliments. The purpose of this idea is to play music that matches the user's emotions. This webpage application will allow the user to take a picture of themselves and keep track of how your mood is changing overtime. Then, it will generate a playlist on spotify depending on your mood, whether its sad, happy, or angry. It will use Spotify's Authentication, and the specific user's daily emotions are stored in mongodb. Additionally, it will display the average emotion score through the days you have been using this application to further help the user understand how he/she has been feeling. Ultimately the goal is that, the user, whether they were sad or happy, will end the day feeling slightly better as they have listened to music that fits their emotions. Enjoy! 
 
 Primary Language: Javascript
+
 API: Google Cloud Vision, Spotify 
+
 Authentication: Spotify
+
 Database: MongoDB
 
 ## Instructions
